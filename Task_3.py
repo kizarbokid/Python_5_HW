@@ -1,9 +1,9 @@
-with open('RLE input.txt', 'r') as file:
+with open('input.txt', 'r') as file:
   input_str=file.read()
 
 
-def RLE_algorithm(string):
-    RLE_out = ""
+def compress(string):
+    compr_str = ""
     current_i = 0
     # пока номер текущего элемента меньше длины входной строки
     while current_i < len(string):
@@ -13,13 +13,12 @@ def RLE_algorithm(string):
         while next_j < len(string) and string[next_j] == string[current_i]:
             next_j += 1
             count += 1
-        RLE_out += str(count) + string[current_i]
+        compr_str += str(count) + string[current_i]
         # как только одинаковые элементы закончились, рассмотрим следующий
         current_i = next_j
-    return RLE_out
+    return compr_str
 
-out_str=RLE_algorithm(input_str)
+out_str=compress(input_str)
 
-with open('RLE out.txt', 'w') as file:
+with open('out.txt', 'w') as file:
   file.write(out_str)
-
